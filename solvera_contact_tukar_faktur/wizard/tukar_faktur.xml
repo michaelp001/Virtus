@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_tukar_faktur" model="ir.ui.view">
+        <field name="name">model.faktur.wizard</field>
+        <field name="model">faktur.wizard</field>
+        <field name="priority">3</field>
+        <field name="arch" type="xml">
+            <form string="Create Report Excel">
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="name_sec"/>
+                        <field name="partner_ids"/>
+                    </group>
+
+                </sheet>
+                <footer>
+                    <button name="create_kwitansi" string="_Create" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_tukar_faktur" model="ir.actions.act_window">
+        <field name="name">Kwitansi Gabungan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">faktur.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="solvera_contact_tukar_faktur.action_report_tukar_faktur"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="act_export_excel"
+        name="Kwitansi Gabungan"
+        parent="account.account_reports_management_menu"
+        action="solvera_contact_tukar_faktur.action_tukar_faktur"
+    />
+
+    
+
+   
+    
+</odoo>

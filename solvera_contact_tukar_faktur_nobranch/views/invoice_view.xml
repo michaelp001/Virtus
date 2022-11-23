@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="account_form_views_inherit" model="ir.ui.view">
+        <field name="name">account.form.views.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="allow_tukar_fakur" 
+                attrs="{'invisible':[('move_type', '!=', 'out_invoice')]}"/>
+                <field name="tanggal_tukar_faktur" 
+                attrs="{'invisible':['|',('move_type', '!=', 'out_invoice'),('allow_tukar_fakur','=',False)]}"/>
+                <field name="picking" 
+                attrs="{'invisible':[('move_type', '!=', 'out_invoice')]}"/>
+                <field name="picking_date"
+                attrs="{'invisible':[('move_type', '!=', 'out_invoice')]}"/>
+                <field name="date_validate"
+                attrs="{'invisible':[('move_type', '!=', 'out_invoice')]}"/>
+                <field name='po_customer' string='Po Customer'
+                attrs="{'invisible':[('move_type', '!=', 'out_invoice')]}"/>
+            </field>
+             <field name="invoice_date" position="after">
+                <field name="date_deadline"
+                attrs="{'invisible':1}"/>
+            <field name="invoice_date_due" 
+                attrs="{'invisible':[('move_type', '!=', 'out_invoice')]}"/>
+            </field>
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='price_unit']" position="after">
+                <field name="is_fix_discount" string="Able Fix Discount" invisible="1"/> 
+                <field name="fix_discount" string="Able Fix Discount" invisible="1"/> 
+            </xpath>
+
+        </field>
+    </record>
+    <record id="account_tree_views_inherit" model="ir.ui.view">
+        <field name="name">account.tree.views.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_out_invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field  name="picking"/>
+                <field name="picking_date"/>
+            </xpath> 
+        </field>
+    </record>
+
+  
+
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_excel_accounting" model="ir.ui.view">
+        <field name="name">model.excel.wizard</field>
+        <field name="model">excel.wizard</field>
+        <field name="priority">3</field>
+        <field name="arch" type="xml">
+            <form string="Create Report Excel">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+
+                </sheet>
+                <footer>
+                    <button name="export_excel" string="_Create" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_excel_export_accounting" model="ir.actions.act_window">
+        <field name="name">Export Activity</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">excel.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="solvera_custom_report_tax_nobranch.action_report_excel_accounting"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="act_export_excel"
+        name="Export Activity"
+        parent="account.account_reports_management_menu"
+        action="solvera_custom_report_tax_nobranch.action_excel_export_accounting"
+    />
+
+    
+
+   
+    
+</odoo>

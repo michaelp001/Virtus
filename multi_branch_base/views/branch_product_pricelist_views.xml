@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_product_pricelist_form_inherit" model="ir.ui.view">
+        	<field name="name">product.pricelist.form.inherit</field>
+        	<field name="model">product.pricelist</field>
+        	<field name="inherit_id" ref="product.product_pricelist_view"/>
+        	<field name="arch" type="xml">
+            	<field name="company_id" position="after">
+					<field name="branch_id" options="{'no_create': True}" domain="[('company_id', '=', company_id)]"/>
+            	</field>
+        	</field>
+        </record>
+
+		<record id="view_product_pricelist_tree_inherit" model="ir.ui.view">
+        	<field name="name">product.pricelist.tree.inherit</field>
+        	<field name="model">product.pricelist</field>
+        	<field name="inherit_id" ref="product.product_pricelist_view_tree"/>
+        	<field name="arch" type="xml">
+            	<field name="company_id" position="after">
+					<field name="branch_id" options="{'no_create': True}" domain="[('company_id', '=', company_id)]"/>
+            	</field>
+        	</field>
+        </record>
+
+		<!-- <record id="product_pricelist_rule" model="ir.rule">
+			<field name="name">Pricelist Rule</field>
+			<field name="model_id" ref="product.product_pricelist_view_tree"/>
+			<field name="domain_force">['|',('branch_id', 'in', user.branch_ids.ids),('branch_id','=',False)]</field>
+		</record> -->
+
+        <!-- <record id="product_pricelist_item_action" model="ir.actions.act_window">
+            <field name="name">Price Rules</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.pricelist.item</field>
+            <field name="view_mode">tree,form</field>
+			<field name="domain">[('branch_id','=','user.branch_id.id')]</field>
+        </record>  -->
+    </data>
+</odoo>

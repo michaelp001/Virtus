@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+action_journal_export,journal.wizard,model_journal_wizard,,1,1,1,1
+action_sale_export_tax,sale.wizard,model_sale_wizard,,1,1,1,1
+action_excel_export_accounting,excel.wizard,model_excel_wizard,,1,1,1,1

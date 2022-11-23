@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>   
+    <record id="view_product_template_form_inherit" model="ir.ui.view">
+        <field name="name">product.template.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <field name="barcode" position="after">
+                <field name="cost_method"/>
+            </field>
+
+            <field name="company_id" position="before">
+                <field  name="standard_price_jakarta" 
+                attrs="{'invisible': [('user_branch','not in', (1))]}"
+                />
+                <field name="user_branch" invisible="1"/>
+                <field  name="standard_price_surabaya"
+                attrs="{'invisible': [('user_branch','not in', (2))]}"/>
+                <field  name="standard_price_bali" 
+                attrs="{'invisible': [('user_branch','not in', (3))]}"/>
+            
+            </field>
+
+        </field>
+    </record>
+    <record id="view_product_product_form_inherit" model="ir.ui.view">
+        <field name="name">product.product.form.inherit</field>
+        <field name="model">product.product</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+
+            <field name="company_id" position="before">
+                <field name="standard_price_jakarta"/>
+                <field name="standard_price_surabaya"/>
+                <field name="standard_price_bali" />
+                <field name="stock_quant_ids"/>
+            </field>
+
+        </field>
+    </record>
+
+    <record id="view_category_property_manufactur_form" model="ir.ui.view">
+        <field name="name">product.category.stock.property.manufactur.form.inherit</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="account.view_category_property_form"/>
+        <field name="arch" type="xml">
+            <field name="property_stock_account_output_categ_id" position="after">
+                <field name="property_account_output_production_categ_id"/>
+                <field name="property_account_input_production_categ_id"/>
+
+
+                <field name="property_account_rkho_categ_id"/>
+                <field name="property_account_rkcabang_categ_id"/>
+                <field name="property_account_persediaan_transfer_jakarta_categ_id"/>
+
+
+        
+            </field>
+            
+        </field>
+    </record>
+
+
+</odoo>

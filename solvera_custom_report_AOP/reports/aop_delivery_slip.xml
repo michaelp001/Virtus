@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="report_solvera_delivery_document_aop">
+        <t t-call="web.html_container">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <t t-call="web.basic_layout">
+                <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
+                <t t-set="partner" t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
+                <h1 style="text-align:center;padding-top:20px">Delivery Order</h1>
+                <div class='row' style="padding-bottom : 20px;padding-top : 0px" >
+                    <table width='100%'>
+                        <tr>
+                            <td width="15%" style="vertical-align: top;text-align: left;padding-top : 10px;padding-left : 20px">
+                                <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-left" alt="Logo" style="max-height: 50px;"/>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td width="50%" style="vertical-align: top;text-align: left;padding-top : 10px;padding-left : 30px">
+                                <!-- <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-left" alt="Logo" style="max-height: 100px;"/> -->
+                                <div class="float-left company_address">
+                                    <div>
+                                        <strong t-field="company.partner_id.name"/>
+                                    </div>
+                                    <span t-field="company.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
+                                </div>
+                            </td>
+                        
+                            <td width="50%" style="vertical-align: top;text-align: left;padding-top : 10px;">
+                                <table widith="100%">
+                                    <tr>
+                                        <td width='40%'/>
+                                        <td width='60%'/>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left">
+                                            <b style="padding-left : 40px">Nama Customer</b>
+                                        </td>
+                                        <td t-if="o.partner_id.parent_id">
+                                            : <span style="padding-left:6px" t-field="o.partner_id.parent_id.name"/>
+                                        </td>
+                                        <td t-if="not o.partner_id.parent_id">
+                                            : <span style="padding-left:6px" t-field="o.partner_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left">
+                                            <b style="padding-left : 40px">Nama Outlet</b>
+                                        </td>
+                                        <td t-if="o.partner_id.internal_name">
+                                            : <span style="padding-left:5px" t-field="o.partner_id.internal_name"/>
+                                        </td>
+                                        <td t-if="not o.partner_id.internal_name">
+                                            : <span style="padding-left:5px" t-field="o.partner_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left">
+                                            <b style="padding-left : 40px">Delivery Add</b>
+                                        </td>
+                                        <td>
+                                            <span style="padding-left:5px; padding-top:-5px" t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left">
+                                            <b style="padding-left : 40px">Po Customer</b>
+                                        </td>
+                                        <td>
+                                            : <span style="padding-left:5px; padding-top:5px;" t-field="o.po_customer" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left">
+                                            <b style="padding-left : 40px">Nomor DO</b>
+                                        </td>
+                                        <td>
+                                            : <span style="padding-left:5px" t-field="o.name"/>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td style="text-align:left">
+                                            <b style="padding-left : 40px">Tanggal Delivery</b>
+                                        </td>
+                                        <td>
+                                            : <span style="padding-left:5px; padding-top:5px;" t-field="o.Flag_tanggal_dikirim" t-options='{"format": "dd/MM/yyyy"}'/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+                <style>
+                    div.pages {
+                    border: 2px solid black;
+                    width: 100%;
+                    padding:0;
+                    margin:0;
+                    white-space: nowrap;
+                    border-collapse: collapse!important ;
+                    }
+                    table.tables {
+                        background: #fff;
+                        border-collapse: collapse;
+                        theads {
+                            border-bottom: 1px solid black;
+                            padding:0
+                            tr th  {
+                                text-transform: uppercase;
+                                border: 1px solid black;
+                                border-collapse: collapse;
+
+                                padding: 5px 8px;
+                            }
+                        }
+                        
+                    }
+                    
+
+                </style>
+                No. SO:<span t-field="o.origin"/> || Tgl. SO: <span t-field="o.tanggal_so" t-options='{"format": "dd/MM/yyyy"}'/> 
+                <div class="pages"><!-- 
+                --><table class="tables" t-if="o.state!='done'" name="stock_move_table" >
+                        <t t-set="has_serial_number" t-value="False"/>
+                        <t t-set="has_serial_number" t-value="o.move_line_ids.mapped('lot_id')" groups="stock.group_lot_on_delivery_slip"/>
+                            
+                        <theads>
+                            <tr>
+                                 <th name="th_sml_product_code" style="border-bottom: 1px solid black;border-right: 1px solid black;text-align: center;padding: 10px" width="5%" height="40px"><strong>NO</strong></th>
+                                <th name="th_sml_product" style="border-bottom: 1px solid black;border-right: 1px solid black;text-align: center;padding: 10px" width="65%" height="40px"><strong>Nama Barang</strong></th>
+
+                                <th name="th_sml_uom" style="border-bottom: 1px solid black;border-right: 1px solid black; text-align: center;padding: 10px" width="18%" height="40px"><strong>Jumlah</strong></th>
+                                <th name="th_sml_quantity" style="border-bottom: 1px solid black;border-right: 1px solid black; text-align: center;padding: 10px" width="12%" height="40px"><strong>Unit</strong></th>
+
+                            </tr>
+                        </theads>
+                        <tbodys class="tbodys">
+                        <!-- This part gets complicated with different use cases (additional use cases in extensions of this report):
+                                1. If serial numbers are used and set to print on delivery slip => print lines as is, otherwise group them by overlapping
+                                    product + description + uom combinations
+                                2. If any packages are assigned => split products up by package (or non-package) and then apply use case 1 -->
+                            <!-- If has destination packages => create sections of corresponding products -->
+                            <t t-if="o.has_packages" name="has_packages">
+                                <t t-set="packages" t-value="o.move_line_ids.mapped('result_package_id')"/>
+                                <t t-foreach="packages" t-as="package">
+                                    <t t-call="solvera_custom_report_AOP.stock_report_delivery_package_section_line"/>
+                                    <t t-set="package_move_lines" t-value="o.move_line_ids.filtered(lambda : l.result_package_id == package)"/>
+                                    <!-- If printing lots/serial numbers => keep products in original lines -->
+                                    <t t-if="has_serial_number">
+                                        <tr t-foreach="package_move_lines" t-as="move_line"  >
+                                            <t t-call="solvera_custom_report_AOP.stock_report_delivery_has_serial_move_lines"/>
+                                        </tr>
+                                    </t>
+                                    <!-- If not printing lots/serial numbers => merge lines with same product+description+uom -->
+                                    <t t-else="">
+                                        <t t-set="aggregated_lines" t-value="package_move_lines._get_aggregated_product_quantities()"/>
+                                        <t t-call="solvera_custom_report_AOP.stock_report_delivery_has_serial_move_lines"/>
+                                    </t>
+                                </t>
+                                <!-- Make sure we do another section for package-less products if they exist -->
+                                <t t-set="move_lines" t-value="o.move_line_ids.filtered(lambda l: not l.result_package_id)"/>
+                                <t t-if="move_lines" name="no_package_move_lines">
+                                    <t t-call="solvera_custom_report_AOP.stock_report_delivery_no_package_section_line" name="no_package_section"/>
+                                    <t t-if="has_serial_number">
+                                        <tr t-foreach="move_lines" t-as="move_line">
+                                            <t t-call="solvera_custom_report_AOP.stock_report_delivery_has_serial_move_lines"/>
+                                        </tr>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-set="aggregated_lines" t-value="move_lines._get_aggregated_product_quantities()"/>
+                                        <t t-if="aggregated_lines">
+                                            <t t-call="solvera_custom_report_AOP.stock_report_delivery_has_serial_move_lines"/>
+                                        </t>
+                                    </t>
+                                    
+                                </t>
+
+                            </t>
+                            <!-- No destination packages -->
+                            <t t-else="">
+                                <!-- If printing lots/serial numbers => keep products in original lines -->
+                                <t t-if="has_serial_number">
+                                    <tr t-foreach="o.move_line_ids" t-as="move_line" >
+                                        <t t-call="solvera_custom_report_AOP.stock_report_delivery_has_serial_move_lines"/>
+                                    </tr>
+                                </t>
+                                <!-- If not printing lots/serial numbers => merge lines with same product -->
+                                <t t-else="" name="aggregated_move_lines">
+                                    <tr t-foreach="o.move_line_ids" t-as="move_line" >
+                                        <t t-call="solvera_custom_report_AOP.stock_report_delivery_has_serial_move_lines"/>
+                                    </tr>
+                                </t>
+                            </t>
+                        </tbodys>
+                    </table>
+                    <table class="tables" t-if="o.move_line_ids and o.state=='done'" name="stock_move_line_table"  >
+                        <t t-set="has_serial_number" t-value="False"/>
+                        <t t-set="has_serial_number" t-value="o.move_line_ids.mapped('lot_id')" groups="stock.group_lot_on_delivery_slip"/>
+                        <theads>
+                            <tr>
+                                <th name="th_sml_product_code" style="border-bottom: 1px solid black;border-right: 1px solid black;text-align: center;padding: 10px" width="5%" height="40px"><strong>NO</strong></th>
+                                <th name="th_sml_product" style="border-bottom: 1px solid black;border-right: 1px solid black;text-align: center;padding: 10px" width="65%" height="40px"><strong>Nama Barang</strong></th>
+
+                                <th name="th_sml_uom" style="border-bottom: 1px solid black;border-right: 1px solid black; text-align: center;padding: 10px" width="18%" height="40px"><strong>Jumlah</strong></th>
+                                <th name="th_sml_quantity" style="border-bottom: 1px solid black;border-right: 1px solid black; text-align: center;padding: 10px" width="12%" height="40px"><strong>Unit</strong></th>
+                    
+                            </tr>
+                        </theads>
+                        <tbodys class="tbodys" >
+                            
+                        <!-- This part gets complicated with different use cases (additional use cases in extensions of this report):
+                                1. If serial numbers are used and set to print on delivery slip => print lines as is, otherwise group them by overlapping
+                                    product + description + uom combinations
+                                2. If any packages are assigned => split products up by package (or non-package) and then apply use case 1 -->
+                            <!-- If has destination packages => create sections of corresponding products -->
+                            <t t-if="o.has_packages" name="has_packages">
+                                <t t-set="packages" t-value="o.move_line_ids.mapped('result_package_id')"/>
+                                <t t-foreach="packages" t-as="package">
+                                    <t t-call="solvera_custom_report_AOP.stock_report_delivery_package_section_line"/>
+                                    <t t-set="package_move_lines" t-value="o.move_line_ids.filtered(lambda l: l.result_package_id == package)"/>
+                                    <!-- If printing lots/serial numbers => keep products in original lines -->
+                                    <t t-if="has_serial_number">
+                                        <tr t-foreach="package_move_lines" t-as="move_line"  >
+                                            <t t-call="solvera_custom_report_AOP.stock_report_delivery_has_serial_move_lines"/>
+                                        </tr>
+                                    </t>
+                                    <!-- If not printing lots/serial numbers => merge lines with same product+description+uom -->
+                                    <t t-else="">
+                                        <t t-set="aggregated_lines" t-value="package_move_lines._get_aggregated_product_quantities()"/>
+                                        <t t-call="solvera_custom_report_AOP.stock_report_delivery_has_serial_move_lines"/>
+                                    </t>
+                                </t>
+                                <!-- Make sure we do another section for package-less products if they exist -->
+                                <t t-set="move_lines" t-value="o.move_line_ids.filtered(lambda l: not l.result_package_id)"/>
+                                <t t-if="move_lines" name="no_package_move_lines">
+                                    <t t-call="solvera_custom_report_AOP.stock_report_delivery_no_package_section_line" name="no_package_section"/>
+                                    <t t-if="has_serial_number">
+                                        <tr t-foreach="move_lines" t-as="move_line">
+                                            <t t-call="solvera_custom_report_AOP.stock_report_delivery_has_serial_move_lines"/>
+                                        </tr>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-set="aggregated_lines" t-value="move_lines._get_aggregated_product_quantities()"/>
+                                        <t t-if="aggregated_lines">
+                                            <t t-call="solvera_custom_report_AOP.stock_report_delivery_has_serial_move_lines"/>
+                                        </t>
+                                    </t>
+                                </t>
+                            </t>
+                            <!-- No destination packages -->
+                            <t t-else="">
+                                <!-- If printing lots/serial numbers => keep products in original lines -->
+                                <t t-if="has_serial_number">
+                                    <tr t-foreach="o.move_line_ids" t-as="move_line" >
+                                        <t t-call="solvera_custom_report_AOP.stock_report_delivery_has_serial_move_lines"/>
+                                    </tr>
+                                </t>
+                                <!-- If not printing lots/serial numbers => merge lines with same product -->
+                                <t t-else="" name="aggregated_move_lines">
+                                    <tr t-foreach="o.move_line_ids" t-as="move_line" >
+                                        <t t-call="solvera_custom_report_AOP.stock_report_delivery_has_serial_move_lines"/>
+                                    </tr>
+
+                                </t>
+                            </t>
+
+                        </tbodys>
+                         
+                    </table>
+                </div>
+                
+                <div id="total_berat" >
+                    <table class="table " width="100%">
+                        <tr >
+                            <td class="text-right" width="5%">
+                            <i>Notes:</i>
+                            </td>
+                            <td class="text-left" width="70%">
+                                Harap memeriksa kondisi dan jumlah seluruh barang pada <br/>
+                                saat menerima. Kami tidak bertanggung jawab atas<br/>
+                                kekurangan maupun kerusakan barang setelah <br/>
+                                dilakukan pengiriman.
+                            </td>
+                            <td class="text-right" width="15%" style="padding-right:20px;"><strong></strong></td>
+                            <td class="text-right" width="10%" style="padding-right:15px;">
+                                <!-- <b><span t-esc="o.total_cbm"/>m<sup>3</sup></b> -->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <style>
+                    div.fixed {
+                    position:relative;
+                    width: 100%;
+                    }
+                    hre { 
+                    display: block;
+                    margin-top: 0.5em;
+                    margin-bottom: 0.5em;
+                    margin-left: auto;
+                    margin-right: auto;
+                    border: 1px solid black;
+                    } 
+                </style>
+                <div class="fixed" style="page-break-after: always;background-color:#fff;">
+                    <table width='100%'>
+                        <tr>
+                            <td width="33%" style="vertical-align: top;text-align: center">
+                                Warehouse:
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <hre style="width:40%;"/>
+                            </td>
+                            <td width="33%" style="vertical-align: top;text-align: center">
+                                Pengirim:
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <hre style="width:40%;"/>
+                            </td>
+                            <td width="33%" style="vertical-align: top;text-align: center">
+                                Penerima :
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <hre style="width:40%;"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div t-if="o.signature" class="mt32 ml64 mr4" name="signature">
+                    <div class="offset-8">
+                        <strong>Signature</strong>
+                    </div>
+                    <div class="offset-8">
+                        <img t-att-src="image_data_uri(o.signature)" style="max-height: 4cm; max-width: 8cm;"/>
+                    </div>
+                    <div class="offset-8 text-center">
+                        <p t-field="o.partner_id.name"/>
+                    </div>
+                </div>
+            </t>
+         </t>
+    </template>
+
+    <template id="stock_report_delivery_has_serial_move_lines">
+
+        <td class="text-center" name="move_line_product_code" style="border-right: 1px solid black;font-size:16px;" height="10px">
+            <span t-esc="move_line_index+1"/>
+        </td>
+        <td class="text-left" name="move_line_product_name" style="border-right: 1px solid black;font-size:16px;padding-left: 5px;" height="10px">
+            <span t-field="move_line.product_id.display_name"/>
+        </td>
+        <td class="text-right" name="move_line_lot_qty_done" style="border-right: 1px solid black;font-size:16px;padding-right: 17px;" height="10px">
+            <span t-esc="'{:,.0f}'.format(move_line.qty_done)"/>
+        </td>
+        <td class="text-center" name="move_line_lot_uom_done" style="border-right: 1px solid black;font-size:16px;" height="10px">
+            <span t-field="move_line.product_uom_id"/>
+        </td>
+        <!-- <td class="text-center" name="move_line_lot_cbm_done" style="border-right: 1px solid black;font-size:16px;" height="10px">
+            <span t-field="move_line.product_id.volume"/>
+        </td> -->
+
+    </template>
+    <template id="stock_report_delivery_aggregated_move_lines">
+        <tr t-foreach="aggregated_lines" t-as="line">
+            <td >
+                <span t-esc="aggregated_lines[line]['name']"/>
+                <p t-if="aggregated_lines[line]['description']">
+                    <span t-esc="aggregated_lines[line]['description']"/>
+                </p>
+            </td>
+            <td class="text-center" name="move_line_aggregated_uom_done" >
+                <span t-esc="aggregated_lines[line]['product_uom']"/>
+            </td>
+            <td class="text-center" name="move_line_aggregated_qty_done" >
+                <span t-esc="aggregated_lines[line]['qty_done']"/>
+            </td>
+        </tr>
+    </template>
+
+  
+
+    <template id="report_solvera_deliveryslip">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="solvera_custom_report_AOP.report_solvera_delivery_document_aop" t-lang="o.partner_id.lang"/>
+        </t>
+    </template>
+
+</odoo>

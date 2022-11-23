@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_solvera_virtus_delivery" model="ir.actions.report">
+        <field name="name">Virtus Delivery Slip</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">solvera_custom_report_virtus.report_solvera_deliveryslip</field>
+        <field name="report_file">solvera_custom_report_virtus.report_solvera_deliveryslip</field>
+        <field name="print_report_name">'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_solvera_virtus_good_receipt" model="ir.actions.report">
+        <field name="name">Virtus Good Receipt</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">solvera_custom_report_virtus.report_solvera_good_receipt</field>
+        <field name="report_file">solvera_custom_report_virtus.report_solvera_good_receipt</field>
+        <field name="print_report_name">'Good Receipt - %s - %s' % (object.partner_id.name or '', object.name)</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_solvera_virtus_internal" model="ir.actions.report">
+        <field name="name">Virtus Internal Transfer</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">solvera_custom_report_virtus.report_solvera_transfer</field>
+        <field name="report_file">solvera_custom_report_virtus.report_solvera_transfer</field>
+        <field name="print_report_name">'Internal Transfer - %s - %s' % (object.partner_id.name or '', object.name)</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="report_invoice_virtus" model="ir.actions.report">
+        <field name="name">Report Invoice Virtus</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">solvera_custom_report_virtus.report_invoice_virtus</field>
+        <field name="report_file">solvera_custom_report_virtus.report_invoice_virtus</field>
+        <field name="print_report_name">(object._get_report_base_filename())</field>
+        <field name="attachment">(object.state == 'posted') and ((object.name or 'INV').replace('/','_')+'.pdf')</field>
+        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+     <record id="report_invoice_virtus_without_discon" model="ir.actions.report">
+        <field name="name">Report Invoice Virtus Without Discount</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">solvera_custom_report_virtus.report_invoice_virtus_without_discount</field>
+        <field name="report_file">solvera_custom_report_virtus.report_invoice_virtus_without_discount</field>
+        <field name="print_report_name">(object._get_report_base_filename())</field>
+        <field name="attachment">(object.state == 'posted') and ((object.name or 'INV').replace('/','_')+'.pdf')</field>
+        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="report_invoice_virtus_decimal" model="ir.actions.report">
+        <field name="name">Report Invoice Virtus Decimal</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">solvera_custom_report_virtus.report_invoice_virtus_decimal</field>
+        <field name="report_file">solvera_custom_report_virtus.report_invoice_virtus</field>
+        <field name="print_report_name">(object._get_report_base_filename())</field>
+        <field name="attachment">(object.state == 'posted') and ((object.name or 'INV').replace('/','_')+'.pdf')</field>
+        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+     <record id="report_invoice_virtus_without_discon_decimal" model="ir.actions.report">
+        <field name="name">Report Invoice Virtus Without Discount Decimal</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">solvera_custom_report_virtus.report_invoice_virtus_without_discount_decimal</field>
+        <field name="report_file">solvera_custom_report_virtus.report_invoice_virtus_without_discount</field>
+        <field name="print_report_name">(object._get_report_base_filename())</field>
+        <field name="attachment">(object.state == 'posted') and ((object.name or 'INV').replace('/','_')+'.pdf')</field>
+        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+    <record id="report_proforma_invoice_virtus" model="ir.actions.report">
+            <field name="name">Virtus Proforma Invoice</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">solvera_custom_report_virtus.report_proforma_invoice_virtus</field>
+            <field name="report_file">solvera_custom_report_virtus.report_proforma_invoice_virtus</field>
+            <field name="print_report_name">'Proforma Invoice - %s - %s' % (object.partner_id.name or '', object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+    </record>
+
+    <record id="report_proforma_invoice_virtus_without_discount" model="ir.actions.report">
+            <field name="name">Virtus Proforma Invoice Without Discount</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">solvera_custom_report_virtus.report_proforma_invoice_virtus_without_discount</field>
+            <field name="report_file">solvera_custom_report_virtus.report_proforma_invoice_virtus_without_discount</field>
+            <field name="print_report_name">'Proforma Invoice - %s - %s' % (object.partner_id.name or '', object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+    </record>
+    <record id="report_sales_order_virtus_without" model="ir.actions.report">
+            <field name="name">Virtus Sales Order</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">solvera_custom_report_virtus.report_sales_order_virtus</field>
+            <field name="report_file">solvera_custom_report_virtus.report_sales_order_virtus</field>
+            <field name="print_report_name">'Proforma Invoice - %s - %s' % (object.partner_id.name or '', object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+    </record>
+    <record id="action_solvera_purchase_order" model="ir.actions.report">
+            <field name="name">Virtus Purchase Order Domestic</field>
+            <field name="model">purchase.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">solvera_custom_report_virtus.report_solvera_purchaseorder</field>
+            <field name="report_file">solvera_custom_report_virtus.report_solvera_purchaseorder</field>
+            <field name="print_report_name">'Purchase Order - %s - %s' % (object.partner_id.name or '', object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+    </record>
+    <record id="action_solvera_purchase_order_import" model="ir.actions.report">
+        <field name="name">Virtus Purchase Order Import</field>
+        <field name="model">purchase.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">solvera_custom_report_virtus.report_solvera_purchaseorder_import</field>
+        <field name="report_file">solvera_custom_report_virtus.report_solvera_purchaseorder_import</field>
+        <field name="print_report_name">'Purchase Order - %s - %s' % (object.partner_id.name or '', object.name)</field>
+        <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+        <field name="binding_type">report</field>
+    </record>
+    
+</odoo>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>   
+    <record id="view_location_source_inherit_form" model="ir.ui.view">
+        <field name="name">stock.location.form.inherit</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_form" />
+        <field name="arch" type="xml">
+
+            <field name="return_location" position="after">
+                <field name="state_source"/>
+            </field>
+
+
+        </field>
+    </record>
+
+    <!-- <record id="view_stock_picking_offline_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.offline.view.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//button[@name='do_unreserve']" position="before">
+                <button name="change_source" type="object" string="Cek" class="oe_highlight" attrs="{'invisible': ['|',('state', 'not in',('assigned','confirmed','waiting')),('location_dest_id', '!=',5)]}" invisible="1"/>
+            </xpath>
+        </field>
+    </record> -->
+
+    <record id="view_location_source_tree_inherit_form" model="ir.ui.view">
+        <field name="name">stock.location.tree.form.inherit</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_tree2" />
+        <field name="arch" type="xml">
+
+            <field name="complete_name" position="after">
+                <field name="state_source"/>
+            </field>
+
+
+        </field>
+    </record>
+
+    <record id="view_purchase_cancel_order_inherit" model="ir.ui.view">
+        <field name="name">sale.view.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <button name="button_cancel" position="replace">
+                <button name="button_cancel" states="draft,to approve,sent,purchase" string="Cancel" type="object" groups="purchase.group_purchase_manager" />
+            </button>
+            <button name="button_done" position="replace">
+                <button name="button_done" type="object" string="Lock" states="purchase" groups="purchase.group_purchase_manager"/>
+            </button>   
+            
+        </field>
+    </record>
+
+
+</odoo>

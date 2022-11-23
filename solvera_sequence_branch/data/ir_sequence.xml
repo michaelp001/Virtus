@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequences for Branch Jakarta -->
+        <record id="sequence_virtus_jakarta" model="ir.sequence">
+            <field name="name">Sequence Branch Jakarata</field>
+            <field name="code">branch.jakarta.virtus</field>
+            <field name="prefix">SOJK0-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_virtus_jakarta_do" model="ir.sequence">
+            <field name="name">Sequence Branch Jakarata DO</field>
+            <field name="code">branch.jakarta.virtus.do</field>
+            <field name="prefix">DOJK0-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        
+
+        <!-- Sequence PO -->
+        <record id="sequence_po" model="ir.sequence">
+            <field name="name">Sequence PO</field>
+            <field name="code">virtus.PO</field>
+            <field name="prefix">%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Branch Surabaya -->
+        <record id="sequence_virtus_surabaya" model="ir.sequence">
+            <field name="name">Sequence Branch Surabaya</field>
+            <field name="code">branch.surabaya.virtus</field>
+            <field name="prefix">SOSB0-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Branch Surabaya -->
+        <record id="sequence_virtus_surabaya_do" model="ir.sequence">
+            <field name="name">Sequence Branch Surabaya DO</field>
+            <field name="code">branch.surabaya.virtus.do</field>
+            <field name="prefix">DOSB0-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Branch Bali -->
+        <record id="sequence_virtus_bali" model="ir.sequence">
+            <field name="name">Sequence Branch Bali</field>
+            <field name="code">branch.bali.virtus</field>
+            <field name="prefix">SOBL-0%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_virtus_bali_do" model="ir.sequence">
+            <field name="name">Sequence Branch Bali</field>
+            <field name="code">branch.bali.virtus.do</field>
+            <field name="prefix">DOBL-0%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Branch Jakarta toped -->
+        <record id="sequence_virtus_jakarta_tp" model="ir.sequence">
+            <field name="name">Sequence Branch Jakarata Toped</field>
+            <field name="code">branch.jakarta.virtus.tp</field>
+            <field name="prefix">SOJK1-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_virtus_jakarta_tp_do" model="ir.sequence">
+            <field name="name">Sequence Branch Jakarata Toped do</field>
+            <field name="code">branch.jakarta.virtus.tp.do</field>
+            <field name="prefix">DOJK1-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Branch Jakarta shopee-->
+        <record id="sequence_virtus_jakarta_sp" model="ir.sequence">
+            <field name="name">Sequence Branch Jakarata shopee</field>
+            <field name="code">branch.jakarta.virtus.sp</field>
+            <field name="prefix">SOJK2-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_virtus_jakarta_sp_do" model="ir.sequence">
+            <field name="name">Sequence Branch Jakarata shopee DO</field>
+            <field name="code">branch.jakarta.virtus.sp.do</field>
+            <field name="prefix">DOJK2-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Branch Jakarta Lazada-->
+        <record id="sequence_virtus_jakarta_lz" model="ir.sequence">
+            <field name="name">Sequence Branch Jakarata Lazada</field>
+            <field name="code">branch.jakarta.virtus.lz</field>
+            <field name="prefix">SOJK3-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_virtus_jakarta_lz_do" model="ir.sequence">
+            <field name="name">Sequence Branch Jakarata Lazada DO</field>
+            <field name="code">branch.jakarta.virtus.lz.do</field>
+            <field name="prefix">DOJK3-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Branch Jakarta Web-->
+        <record id="sequence_virtus_jakarta_wb" model="ir.sequence">
+            <field name="name">Sequence Branch Jakarata Web</field>
+            <field name="code">branch.jakarta.virtus.wb</field>
+            <field name="prefix">SOJK4-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="sequence_virtus_jakarta_wb_do" model="ir.sequence">
+            <field name="name">Sequence Branch Jakarata Web DO</field>
+            <field name="code">branch.jakarta.virtus.wb.do</field>
+            <field name="prefix">DOJK4-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        
+
+        <!-- Sequences for Branch Surabaya toped -->
+        <record id="sequence_virtus_surabaya_tp" model="ir.sequence">
+            <field name="name">Sequence Branch Surabaya Toped</field>
+            <field name="code">branch.surabaya.virtus.tp</field>
+            <field name="prefix">SOSB1-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_virtus_surabaya_tp_do" model="ir.sequence">
+            <field name="name">Sequence Branch Surabaya Toped do</field>
+            <field name="code">branch.surabaya.virtus.tp.do</field>
+            <field name="prefix">DOSB1-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Branch surabaya shopee-->
+        <record id="sequence_virtus_surabaya_sp" model="ir.sequence">
+            <field name="name">Sequence Branch surabaya shopee</field>
+            <field name="code">branch.surabaya.virtus.sp</field>
+            <field name="prefix">SOSB2-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_virtus_surabaya_sp_do" model="ir.sequence">
+            <field name="name">Sequence Branch surabaya shopee DO</field>
+            <field name="code">branch.surabaya.virtus.sp.do</field>
+            <field name="prefix">DOSB2-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Branch surabaya Lazada-->
+        <record id="sequence_virtus_surabaya_lz" model="ir.sequence">
+            <field name="name">Sequence Branch surabaya Lazada</field>
+            <field name="code">branch.surabaya.virtus.lz</field>
+            <field name="prefix">SOSB3-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_virtus_surabaya_lz_do" model="ir.sequence">
+            <field name="name">Sequence Branch surabaya Lazada DO</field>
+            <field name="code">branch.surabaya.virtus.lz.do</field>
+            <field name="prefix">DOSB3-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Branch surabaya Web-->
+        <record id="sequence_virtus_surabaya_wb" model="ir.sequence">
+            <field name="name">Sequence Branch surabaya Web</field>
+            <field name="code">branch.surabaya.virtus.wb</field>
+            <field name="prefix">SOSB4-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="sequence_virtus_surabaya_wb_do" model="ir.sequence">
+            <field name="name">Sequence Branch surabaya Web DO</field>
+            <field name="code">branch.surabaya.virtus.wb.do</field>
+            <field name="prefix">DOSB4-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+
+        <!-- Sequences for Branch Bali toped -->
+        <record id="sequence_virtus_bali_tp" model="ir.sequence">
+            <field name="name">Sequence Branch Bali Toped</field>
+            <field name="code">branch.bali.virtus.tp</field>
+            <field name="prefix">SOBL1-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_virtus_bali_tp_do" model="ir.sequence">
+            <field name="name">Sequence Branch bali Toped do</field>
+            <field name="code">branch.bali.virtus.tp.do</field>
+            <field name="prefix">DOBL1-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Branch bali shopee-->
+        <record id="sequence_virtus_bali_sp" model="ir.sequence">
+            <field name="name">Sequence Branch bali shopee</field>
+            <field name="code">branch.bali.virtus.sp</field>
+            <field name="prefix">SOBL2-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_virtus_bali_sp_do" model="ir.sequence">
+            <field name="name">Sequence Branch bali shopee DO</field>
+            <field name="code">branch.bali.virtus.sp.do</field>
+            <field name="prefix">DOBL2-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Branch bali Lazada-->
+        <record id="sequence_virtus_bali_lz" model="ir.sequence">
+            <field name="name">Sequence Branch bali Lazada</field>
+            <field name="code">branch.bali.virtus.lz</field>
+            <field name="prefix">SOBL3-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_virtus_bali_lz_do" model="ir.sequence">
+            <field name="name">Sequence Branch bali Lazada DO</field>
+            <field name="code">branch.bali.virtus.lz.do</field>
+            <field name="prefix">DOBL3-%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Branch bali Web-->
+        <record id="sequence_virtus_bali_wb" model="ir.sequence">
+            <field name="name">Sequence Branch bali Web</field>
+            <field name="code">branch.bali.virtus.wb</field>
+            <field name="prefix">SOBL4%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="sequence_virtus_bali_wb_do" model="ir.sequence">
+            <field name="name">Sequence Branch bali Web DO</field>
+            <field name="code">branch.bali.virtus.wb.do</field>
+            <field name="prefix">DOBl4%(y)s</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

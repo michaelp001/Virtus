@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_sale_tax" model="ir.ui.view">
+        <field name="name">model.sale.wizard</field>
+        <field name="model">sale.wizard</field>
+        <field name="priority">3</field>
+        <field name="arch" type="xml">
+            <form string="Create Sale Report">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+
+                </sheet>
+                <footer>
+                    <button name="export_sale" string="_Create" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sale_export" model="ir.actions.act_window">
+        <field name="name">Sale_Export</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="solvera_custom_report_tax_nobranch.action_report_sale_tax"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="act_export_sale_tax"
+        name="Sales Export"
+        parent="sale.menu_sale_report"
+        action="solvera_custom_report_tax_nobranch.action_sale_export"
+    />
+
+   
+    
+</odoo>

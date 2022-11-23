@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>   
+    <record id="view_sale_order_inherit" model="ir.ui.view">
+        <field name="name">sale.view.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="date_order" position="after">
+                <field name='po_customer' string='Po Customer'/>
+            </field>
+            <xpath expr="//notebook" position="inside">
+                <page string="Delivery Order" name="delivery_order">
+                    <field name='picking_ids'>
+                        <tree>
+                            <field name='name' string='Delivery Order'/>
+                            <field name='states_tanggal' invisible='1'/>
+                            <field name='state' invisible='1'/>
+                            <field name='states_picking' invisible='1'/>
+                            <field name='location_dest_id' invisible='1'/>
+                            <field name="states" widget="statusbar" statusbar_visible="ready,invoiced"/>
+                            <field name="state" widget="statusbar" statusbar_visible="ready" attrs="{'invisible': 1}"/>
+                            <button string="Create Invoice" name="create_invoices" type="object" class="oe_highlight" context="{'open_invoices': True}"
+                            attrs="{'invisible':['|','|',('states', '==', 'invoiced'),('state', 'not in', 'done'),('location_dest_id', '!=',5)]}"/>
+                            <button string="Reset To Ready" name="reset_to_ready" type="object" class="oe_highlight" context="{'open_invoices': True}"
+                            attrs="{'invisible':['|','|',('states', '==', 'ready'),('states_tanggal', 'not in', 'done'),('location_dest_id', '!=',5)]}"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+
+
+    </record>
+</odoo>
