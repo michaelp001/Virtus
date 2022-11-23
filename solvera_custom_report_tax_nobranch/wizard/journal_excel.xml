@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_faktur" model="ir.ui.view">
+        <field name="name">model.jurnal.wizard</field>
+        <field name="model">journal.wizard</field>
+        <field name="priority">2</field>
+        <field name="arch" type="xml">
+            <form string="Create Report Excel">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+
+                </sheet>
+                <footer>
+                    <button name="export_faktur_excel" string="_Create" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_journal_export" model="ir.actions.act_window">
+        <field name="name">Export Journal</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">journal.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="solvera_custom_report_tax_nobranch.action_report_faktur"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="act_export_journal"
+        name="Export E Faktur"
+        parent="account.account_reports_management_menu"
+        action="solvera_custom_report_tax_nobranch.action_journal_export"
+    />
+
+   
+    
+</odoo>

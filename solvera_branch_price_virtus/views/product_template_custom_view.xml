@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_template_custom_view" model="ir.ui.view">
+        <field name="name">product.template.views.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <field name="barcode" position="after">
+                <field name="price_1" widget='monetary' options="{'currency_field': 'currency_id'}"
+                 attrs="{'invisible': [('branch_ids','not in', (1))]}"/>
+                <field name="price_2" widget='monetary' options="{'currency_field': 'currency_id'}"
+                 attrs="{'invisible': [('branch_ids','not in', (2))]}"/>
+                <field name="price_3" widget='monetary' options="{'currency_field': 'currency_id'}"
+                 attrs="{'invisible': [('branch_ids','not in', (3))]}"/>
+                <field name="branch_ids" widget="many2many_tags" options="{'no_create': True}" invisible="1"/>
+            </field>
+        </field>
+    </record>
+</odoo>

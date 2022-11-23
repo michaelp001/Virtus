@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_state_override" model="ir.ui.view">
+        <field name="name">sale.view.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="state" position="replace">
+                <button name="approval_request" type="object" class="btn-primary" string="Request Approval" attrs="{'invisible': [('state', 'not in','draft')]}"/>
+                <button name="approved" type="object" class="btn-primary" string="Approval" attrs="{'invisible': [('state', 'not in','approval')]}" groups="sales_team.group_sale_manager"/>
+                <button name="approved_cancel" type="object" string="Cancel" attrs="{'invisible': [('state', 'not in','approval')]}" />
+                <field name="state" widget="statusbar" statusbar_visible="draft,sent,sale"/>
+            </field>
+
+            <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+                <attribute name="attrs">{'invisible': [('state', 'not in', ['approved'])]}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_confirm'][1]" position="attributes">
+                <attribute name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="view_sale_tree_order_state_override" model="ir.ui.view">
+        <field name="name">sale.order.tree.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <xpath expr="/tree/field[@name='partner_id']" position="after">
+                <field name="po_customer" invisible="0"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_stock_picking_tree_state_override" model="ir.ui.view">
+        <field name="name">stock.picking.tree.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <xpath expr="/tree/field[@name='partner_id']" position="after">
+                <field name="po_customer" invisible="0"/>
+            </xpath>
+        </field>
+    </record>
+
+   
+
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>   
+    <record id="view_category_property_form" model="ir.ui.view">
+        <field name="name">product.category.stock.property.form.inherit</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="account.view_category_property_form"/>
+        <field name="arch" type="xml">
+            <field name="property_account_expense_categ_id" position="after">
+                <!-- tokopedia -->
+                <field name="property_account_income_toped_categ_id"/>
+                <field name="property_account_expense_toped_categ_id"/>
+                <!-- shoppe -->
+                <field name="property_account_income_shoppe_categ_id"/>
+                <field name="property_account_expense_shoppe_categ_id"/>
+                <!-- lazada -->
+                <field name="property_account_income_lazada_categ_id"/>
+                <field name="property_account_expense_lazada_categ_id"/>
+                <!-- web -->
+                <field name="property_account_income_web_categ_id"/>
+                <field name="property_account_expense_web_categ_id"/>
+            </field>
+            
+        </field>
+    </record>
+</odoo>
+
+

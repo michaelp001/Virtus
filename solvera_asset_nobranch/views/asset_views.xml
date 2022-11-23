@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="asset_form" model="ir.ui.view">
+        <field name="name">account.asset.asset.form</field>
+        <field name="model">account.asset.asset</field>
+        <field name="inherit_id" ref="base_accounting_kit.view_account_asset_asset_form" />
+        <field name="arch" type="xml">
+            <field name="date" position="before">
+                <field name="date_collection" />
+            </field>
+            <xpath expr="//field[@name='value']" position="replace">
+                <field name="value" string="Depreciation Value" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+            </xpath>
+            <field name="currency_id" position="after">
+                <field name="gross_value" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+            </field>   
+        </field>
+    </record>
+</odoo>

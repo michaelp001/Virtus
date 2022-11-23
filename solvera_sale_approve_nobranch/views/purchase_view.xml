@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_purchase_order_state_override" model="ir.ui.view">
+        <field name="name">purchase.order.view.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <field name="state" position="replace">
+                <button name="approval_request" type="object" class="btn-primary" string="Request Approval" attrs="{'invisible': [('state', 'not in',('draft','sent'))]}"/>
+                <button name="approved" type="object" class="btn-primary" string="Approval" attrs="{'invisible': [('state', 'not in','approval')]}" groups="sales_team.group_sale_manager"/>
+                <button name="approved_cancel" type="object" string="Cancel" attrs="{'invisible': [('state', 'not in','approval')]}" />
+                <field name="state" widget="statusbar" statusbar_visible="draft,sent,sale"/>
+            </field>
+
+            <xpath expr="//button[@name='button_confirm'][2]" position="attributes">
+                <attribute name="states">{'invisible': 1}</attribute>
+
+            </xpath>
+            <xpath expr="//button[@name='button_confirm'][1]" position="attributes">
+                <attribute name="states">approved</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_purchase_order_tree_state_override" model="ir.ui.view">
+        <field name="name">purchase.order.tree.view.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="purchase.purchase_order_kpis_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="/tree/field[@name='partner_id']" position="after">
+                <field name="partner_ref" invisible="0"/>
+            </xpath>
+        </field>
+    </record>
+
+   
+
+</odoo>

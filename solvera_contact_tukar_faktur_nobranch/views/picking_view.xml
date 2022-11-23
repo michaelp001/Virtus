@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="picking_views_inherit" model="ir.ui.view">
+        <field name="name">picking.form.views.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+        <field name="partner_id" position="after">
+            <field name='states_tanggal' invisible="1"/>
+            <field name='po_customer' string='Po Customer'/>
+        </field>
+
+
+        <field name="origin" position="after">
+            <field name='tanggal_diterima'/>
+            </field>
+                <xpath expr="//button[@name='do_print_picking']" position="attributes">
+                    <attribute name="attrs">{'invisible': 1}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='do_unreserve']" position="before">
+                    <button name="delivery" type="object" string="Delivery" class="oe_highlight" attrs="{'invisible': ['|','|',('state', 'not in',('assigned')),('location_dest_id', '!=',5),('batch_id','==',False)]}" />
+                    <button name="delivery_part" type="object" string="Delivery Partial" class="oe_highlight" attrs="{'invisible': ['|','|',('state', 'not in',('confirmed')),('location_dest_id', '!=',5),('batch_id','==',False)]}" />
+                    <button name="button_validate" type="object" string="Validate" class="oe_highlight" attrs="{'invisible': ['|',('state', 'in', ('confirmed','done','draft')),('location_dest_id', '=',5)]}" />
+                    <button name="delivery_cancel" type="object" string="Delivery Cancel" class="oe_highlight" attrs="{'invisible': [('state', 'not in',('delivery_part','delivery'))]}" />
+                </xpath>
+                <xpath expr="//button[@name='button_validate'][1]" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|','|',('states_tanggal','!=','done'),('state', 'in', ('waiting','confirmed','assigned', 'done','draft','cancel')),('batch_id','==',False)]}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='button_validate'][2]" position="attributes">
+                    <attribute name="attrs">{'invisible': 1}</attribute>
+                </xpath>
+        </field>
+    </record>
+
+
+</odoo>

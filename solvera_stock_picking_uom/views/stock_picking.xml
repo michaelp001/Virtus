@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_stock_move_form" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='product_uom_qty']" position="after">
+                <field name="uom_convert" optional="hide"/>
+                <field name="uom_demand" optional="hide"/>
+                <field name="uom_id_converter" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+
+    

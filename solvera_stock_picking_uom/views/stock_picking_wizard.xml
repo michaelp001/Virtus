@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_stock_move_line_form" model="ir.ui.view">
+        <field name="name">stock.move.line.form.inherit</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_operation_tree" />
+        <field name="arch" type="xml">
+            <field name="product_uom_id" position="before">
+                <field name="uom_convert" optional="hide"/>
+                <field name="uom_id_converter" optional="hide"/>
+                <field name="picking_type_code" invisible="0"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_stock_wizard_move_form" model="ir.ui.view">
+        <field name="name">stock.move.form.inherit</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_stock_move_nosuggest_operations" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="uom_demand"/>
+            </field>
+        </field>
+    </record>
+</odoo>
+
+
+    

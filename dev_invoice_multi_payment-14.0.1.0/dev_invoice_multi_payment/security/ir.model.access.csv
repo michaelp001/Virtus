@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_advance_payment_line_group_account_invoice,advance.payment.line,model_advance_payment_line,account.group_account_invoice,1,0,0,0
+access_advance_payment_line_group_account_user,advance.payment.line,model_advance_payment_line,account.group_account_user,1,1,1,1
+access_advance_payment_line_group_account_manager,advance.payment.line,model_advance_payment_line,account.group_account_manager,1,1,1,1
+access_bulk_inv_payment_group_account_invoice,bulk.inv.payment.account.invoice,model_bulk_inv_payment,account.group_account_invoice,1,0,0,0
+access_bulk_inv_payment_group_account_user,bulk.inv.payment.account.user,model_bulk_inv_payment,account.group_account_user,1,1,1,1
+access_bulk_inv_payment_group_account_manager,bulk.inv.payment.account.manager,model_bulk_inv_payment,account.group_account_manager,1,1,1,1
+access_bulk_invoice_group_account_invoice,bulk.invoice.accunt.invoice,model_bulk_invoice,account.group_account_invoice,1,0,0,0
+access_bulk_invoice_group_account_user,bulk.invoice.account.user,model_bulk_invoice,account.group_account_user,1,1,1,1
+access_bulk_invoice_group_account_manager,bulk.invoice.account.manager,model_bulk_invoice,account.group_account_manager,1,1,1,1
+

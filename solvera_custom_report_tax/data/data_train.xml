@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="no_name" model="res.partner">
+    <field name="name">no Supplier</field>
+    <field name="is_company">1</field>
+    </record>
+
+    <record id="seq_loan_tender" model="ir.sequence">
+        <field name="name">LOAN ID</field>
+        <field name="code">loan.secq.view</field>
+        <field name="prefix">TE</field>
+        <field name="padding">5</field>
+    </record>
+</odoo>
+

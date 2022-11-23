@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="report_kwitansi"
+        string="Kwitansi Gabungan"
+        model="faktur.wizard"
+        report_type="qweb-pdf"
+        name="solvera_contact_tukar_faktur_nobranch.report_kwitansi_gabungan"
+        file="solvera_contact_tukar_faktur_nobranch.report_kwitansi_gabungan"/>
+</odoo>

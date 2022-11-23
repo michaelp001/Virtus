@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_anggaran,access.project.anggaran,model_project_anggaran,,1,1,1,1
+access_project_anggaran_line,access.project.anggaran.line,model_project_anggaran_line,,1,1,1,1
