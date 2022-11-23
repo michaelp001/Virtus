@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_report_general_ledger_excel" model="ir.actions.report">
+             <field name="name">General Ledger</field>
+             <field name="model">account.report.general.ledger</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_excel_reports.report_generalledger_excel</field>
+            <field name="report_file">accounting_excel_reports.report_generalledger_excel</field>
+             <field name="attachment_use">False</field>
+        </record>
+
+        <record id="action_report_partnerledger_excel" model="ir.actions.report">
+            <field name="name">Partner Ledger</field>
+            <field name="model">account.report.partner.ledger</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_excel_reports.report_partnerledger_excel</field>
+            <field name="report_file">accounting_excel_reports.report_partnerledger_excel</field>
+            <field name="attachment_use">False</field>
+        </record>
+
+        <record id="action_report_trial_balance_excel" model="ir.actions.report">
+            <field name="name">Trial Balance</field>
+            <field name="model">account.balance.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_excel_reports.report_trialbalance_excel</field>
+            <field name="report_file">accounting_excel_reports.report_trialbalance_excel</field>
+            <field name="attachment_use">False</field>
+        </record>
+
+        <record id="action_report_financial_excel" model="ir.actions.report">
+            <field name="name">Financial report</field>
+            <field name="model">account.financial.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_excel_reports.report_financial_excel</field>
+            <field name="report_file">accounting_excel_reports.report_financial_excel</field>
+            <field name="attachment_use">False</field>
+        </record>
+
+        <record id="action_report_account_tax_excel" model="ir.actions.report">
+            <field name="name">Tax report</field>
+            <field name="model">account.tax.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_excel_reports.report_tax_excel</field>
+            <field name="report_file">accounting_excel_reports.report_tax_excel</field>
+            <field name="attachment_use">False</field>
+        </record>
+
+        <record id="action_aged_partner_balance_excel" model="ir.actions.report">
+            <field name="name">Aged Partner Balance</field>
+            <field name="model">account.aged.trial.balance</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_excel_reports.agedpartnerbalance_excel</field>
+            <field name="report_file">accounting_excel_reports.agedpartnerbalance_excel</field>
+            <field name="attachment_use">False</field>
+        </record>
+
+        <record id="action_report_journal_excel" model="ir.actions.report">
+            <field name="name">Journals Audit</field>
+            <field name="model">account.common.journal.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_excel_reports.report_journal_excel</field>
+            <field name="report_file">accounting_excel_reports.report_journal_excel</field>
+            <field name="attachment_use">False</field>
+        </record>
+
+    </data>
+</odoo>
