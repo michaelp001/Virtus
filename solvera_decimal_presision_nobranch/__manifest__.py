@@ -8,7 +8,7 @@
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-       Virtus Custom Contact
+      untuk mengubah menjadi 5 digit tanpa branch
     """,
     'data': [
         # 'security/ir.model.access.csv',

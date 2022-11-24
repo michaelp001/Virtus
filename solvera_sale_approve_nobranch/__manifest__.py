@@ -8,7 +8,7 @@
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-       Virtus Custom Contact
+       Approval in sales no branch
     """,
     'data': [
         # 'security/ir.model.access.csv',

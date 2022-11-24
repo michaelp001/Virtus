@@ -8,7 +8,7 @@
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-      Partner Account Move
+      add on asset date collector
     """,
     'data': [
         # 'security/ir.model.access.csv',

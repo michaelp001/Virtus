@@ -8,7 +8,7 @@
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-      Partner Account Move
+      add manufacture journal (ALBA,AOP)
     """,
     'data': [
         # 'security/ir.model.access.csv',

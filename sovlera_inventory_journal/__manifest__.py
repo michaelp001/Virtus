@@ -2,13 +2,13 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Inventory Journal',
+    'name': 'Solvera Product sample virtus',
     'category': 'Stock',
     'author': 'Michael',
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-      custom journal in stock inventory
+      Product SAMple just for virtus
     """,
     'data': [
         'security/ir.model.access.csv',

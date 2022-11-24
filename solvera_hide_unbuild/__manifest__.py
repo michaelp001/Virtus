@@ -2,13 +2,13 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Hide Value ',
+    'name': 'Hide unbuild ',
     'category': 'Contact',
     'author': 'Michael',
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-       Virtus Custom Contact
+       unbuild gone
     """,
     'data': [
         # 'security/ir.model.access.csv',

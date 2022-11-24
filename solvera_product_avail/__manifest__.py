@@ -2,13 +2,13 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Partner Account Move',
+    'name': 'solvera product available',
     'category': 'Contact',
     'author': 'Michael',
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-      Partner Account Move
+      information for how much product available
     """,
     'data': [
         # 'security/ir.model.access.csv',

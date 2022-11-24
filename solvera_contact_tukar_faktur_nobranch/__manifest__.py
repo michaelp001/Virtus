@@ -8,7 +8,8 @@
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-       Virtus Custom Contact
+       Sistem tukar faktur dimana due date akan diperpanjang sesuai dengan tukar faktur
+       tanpa branch
     """,
     'data': [
         'security/ir.model.access.csv',

@@ -2,13 +2,13 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Solvera custom Pricelist for virtus',
+    'name': 'Branch Price',
     'category': 'Stock',
     'author': 'Michael',
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-       Virtus Custom stock
+       TO Hide branch price for another branch, and UOM descriction
     """,
     'data': [
         # 'security/ir.model.access.csv',

@@ -8,7 +8,7 @@
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-       Virtus Custom stock
+       User limitation (only can see his branch on contact)
     """,
     'data': [
         # 'security/branch_security.xml',

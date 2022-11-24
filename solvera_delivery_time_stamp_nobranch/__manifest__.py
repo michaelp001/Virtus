@@ -2,13 +2,13 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Solvera Stamp Deliveru',
+    'name': 'Solvera Stamp Deliveru no branch',
     'category': 'Contact',
     'author': 'Michael',
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-       Virtus Custom Contact
+      flag for tanggal terima, nobranch
     """,
     'data': [
         # 'security/ir.model.access.csv',

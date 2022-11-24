@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Solvera Manual Faktur',
+    'name': 'Solvera Default Res Partner',
     'category': 'Contact',
     'author': 'Michael',
     'version': '1.0',

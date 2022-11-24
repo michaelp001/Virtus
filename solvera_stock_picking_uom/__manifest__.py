@@ -8,7 +8,7 @@
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-      Partner Account Move
+      UOM in stock picing
     """,
     'data': [
         # 'security/ir.model.access.csv',

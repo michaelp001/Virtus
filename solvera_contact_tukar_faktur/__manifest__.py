@@ -2,13 +2,13 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Custom Contact',
+    'name': 'Tukar Faktur',
     'category': 'Contact',
     'author': 'Michael',
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-       Virtus Custom Contact
+       Sistem tukar faktur dimana due date akan diperpanjang sesuai dengan tukar faktur
     """,
     'data': [
         'security/ir.model.access.csv',

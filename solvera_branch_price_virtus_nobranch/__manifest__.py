@@ -8,7 +8,7 @@
     'version': '1.0',
     'website': 'http://www.solvera.id/',
     'description': """
-       Virtus Custom stock
+       IN NO Branch ONLY FOR UOM DESCRITION (AOP,ALBA)
     """,
     'data': [
         # 'security/ir.model.access.csv',
